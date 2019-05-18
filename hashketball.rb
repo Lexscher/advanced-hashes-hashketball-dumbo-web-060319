@@ -1,4 +1,5 @@
-# Write your code here!
+require "pry"
+
 def game_hash()
     game = {
         :home => {
@@ -130,9 +131,42 @@ def game_hash()
     }
 end
 
-def num_points_scored()
+def num_points_scored(player)
+    # score = 0
+    # found = false
 
+    # go through these hashes
+    game_hash.each do |state, team|
+        # binding.pry
+        # go through each player
+        # break if found == true
+        team[:players].each do |stat_list|
+            # binding.pry # tells us that stat_list[:points] is an integer, 10 where the player's name is Jeff Adrien
+            # if the name matches our passed player
+            # break if found == true
+            if stat_list[:player_name] == player
+                # send us the score
+                puts "#{player} FOUND: #{stat_list[:player_name]} scored #{stat_list[:points]}" #This prints the points in a string
+                puts stat_list[:points] # This prints the points as an integer
+                # puts stat_list[:points].is_a?(String)
+                puts stat_list[:points].is_a?(Integer) # Correct, this is an integer
+                # puts stat_list[:points].is_a?(Float)
+                # puts stat_list[:points].is_a?(Hash)
+                # puts stat_list[:points].is_a?(Symbol)
+
+                # puts score
+                # return score
+                # found = true
+                return stat_list[:points] # But when I return it, I get the whole game_hash object
+            else          
+                puts "#{player} NOT FOUND: #{stat_list[:player_name]} scored #{stat_list[:points]}"
+            end
+        end
+    end
+    # score
+    # In conclusion, - I'm confused
 end
+# num_points_scored("Brendan Haywood")
 
 def shoe_size()
 
