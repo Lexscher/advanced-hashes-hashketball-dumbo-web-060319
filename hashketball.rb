@@ -1,6 +1,6 @@
 require "pry"
 
-def game_hash()
+def game_hash
     game = {
         :home => {
             :team_name => "Brooklyn Nets",
@@ -52,7 +52,7 @@ def game_hash()
                         :slam_dunks => 5
                     },
                     {
-                        :player_name => "Alan Anderson",
+                        :player_name => "Jason Terry",
                         :number => 31,
                         :shoe => 15,
                         :points => 19,
@@ -73,7 +73,7 @@ def game_hash()
                     {
                         :player_name => "Jeff Adrien",
                         :number => 4,
-                        :shoe => 8,
+                        :shoe => 18,
                         :points => 10,
                         :rebounds => 1,
                         :assists => 1,
@@ -131,86 +131,71 @@ def game_hash()
     }
 end
 
-def num_points_scored(player)
-    # score = 0
-    # found = false
-
-    # go through these hashes
+def find_player(player)
     game_hash.each do |state, team|
-        # binding.pry
-        # go through each player
-        # break if found == true
-        team[:players].each do |stat_list|
-            # binding.pry # tells us that stat_list[:points] is an integer, 10 where the player's name is Jeff Adrien
-            # if the name matches our passed player
-            # break if found == true
-            if stat_list[:player_name] == player
-                # send us the score
-                puts "#{player} FOUND: #{stat_list[:player_name]} scored #{stat_list[:points]}" #This prints the points in a string
-                puts stat_list[:points] # This prints the points as an integer
-                # puts stat_list[:points].is_a?(String)
-                puts stat_list[:points].is_a?(Integer) # Correct, this is an integer
-                # puts stat_list[:points].is_a?(Float)
-                # puts stat_list[:points].is_a?(Hash)
-                # puts stat_list[:points].is_a?(Symbol)
 
-                # puts score
-                # return score
-                # found = true
-                return stat_list[:points] # But when I return it, I get the whole game_hash object
-            else          
-                puts "#{player} NOT FOUND: #{stat_list[:player_name]} scored #{stat_list[:points]}"
+        team[:players].each do |stat_list|
+
+            if player == stat_list[:player_name] 
+                             
+                return stat_list
+            else
+                puts "Nothin to see here!"
             end
         end
     end
-    # score
-    # In conclusion, - I'm confused
 end
-# num_points_scored("Brendan Haywood")
 
-def shoe_size()
+def num_points_scored(player)
+    score = 0
+    score = find_player(player)[:points]
+end
 
+
+def shoe_size(player)
+    size = 0
+    size = find_player(player)[:shoe]
 end
 
 def team_colors()
 
 end
 
-def team_names()
+# def team_names()
 
-end
+# end
 
-def player_numbers()
+# def player_numbers()
 
-end
+# end
 
-def player_stats()
+# def player_stats()
 
-end
+# end
 
-def big_shoe_rebounds()
+# def big_shoe_rebounds()
 
-end
+# end
 
 
-# bonus
+# # bonus
 
-def most_points_scored()
+# def most_points_scored()
 
-end
+# end
 
-def winning_team()
+# def winning_team()
 
-end
+# end
 
-def player_with_longest_name()
+# def player_with_longest_name()
 
-end
+# end
 
-# super bonus
-def long_name_steals_a_ton?()
+# # super bonus
+# def long_name_steals_a_ton?()
 
-end
+# end
 
 
 
