@@ -256,7 +256,6 @@ def most_points_scored
             high_score = stat_list[:points]
             player = stat_list[:player_name]
         end
-        puts "#{player} scored #{high_score} points"
 
     end
 
@@ -279,9 +278,19 @@ def winning_team
     end
 end
 
-# def player_with_longest_name()
+def player_with_longest_name
+    player = ""
+    name_length = 0
 
-# end
+    all_players.collect do |stats|
+        name = stats[:player_name]
+        if name.length >= name_length
+            player = name
+            name_length = name.length
+        end
+    end
+    player
+end
 
 # # super bonus
 # def long_name_steals_a_ton?()
