@@ -169,10 +169,13 @@ end
 
 # Find Every Player EVER
 def all_players
+    all = []
     game_hash.each do |state, team|       
-        p = team[:players]
-        return p
+        t = team[:players]
+        t.map{|p| all << p}
     end
+
+    all
 end
 
 ######-----^ Helper functions ^-----######
@@ -236,16 +239,29 @@ def big_shoe_rebounds
             total_rebounds = stat_list[:rebounds]
         end
     end
-    
+
     total_rebounds
 end
 
 
-# # bonus
+# bonus
 
-# def most_points_scored()
+def most_points_scored
+    high_score = 0
+    player = ""
 
-# end
+    all_players.each do |stat_list|
+        
+        if stat_list[:points] > high_score
+            high_score = stat_list[:points]
+            player = stat_list[:player_name]
+        end
+        puts "#{player} scored #{high_score} points"
+
+    end
+
+    player
+end
 
 # def winning_team()
 
