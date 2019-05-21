@@ -202,8 +202,8 @@ end
 
 def team_names
     teams = []
-    teams << find_team("Charlotte Hornets")
     teams << find_team("Brooklyn Nets")
+    teams << find_team("Charlotte Hornets")
 
     teams
 end
@@ -263,9 +263,21 @@ def most_points_scored
     player
 end
 
-# def winning_team()
+def winning_team
+    bk = find_players("Brooklyn Nets")
+    cl = find_players("Charlotte Hornets")
+    bk_total = 0
+    cl_total = 0
 
-# end
+    bk.map{|p| bk_total += p[:points]}
+    cl.map{|p| bk_total += p[:points]}
+
+    if bk_total > cl_total
+        "Brooklyn Nets"
+    else
+        "Charlotte Hornets"
+    end
+end
 
 # def player_with_longest_name()
 
