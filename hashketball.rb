@@ -167,6 +167,14 @@ def find_players(name_of_team)
     end
 end
 
+# Find Every Player EVER
+def all_players
+    game_hash.each do |state, team|       
+        p = team[:players]
+        return p
+    end
+end
+
 ######-----^ Helper functions ^-----######
 
 
@@ -218,9 +226,19 @@ def player_stats(player)
     stats_only
 end
 
-# def big_shoe_rebounds()
+def big_shoe_rebounds
+    biggest_shoe_size = 0
+    total_rebounds = 0
 
-# end
+    all_players.map do |stat_list|
+        if stat_list[:shoe] > biggest_shoe_size
+            biggest_shoe_size = stat_list[:shoe]
+            total_rebounds = stat_list[:rebounds]
+        end
+    end
+    
+    total_rebounds
+end
 
 
 # # bonus
