@@ -4,7 +4,7 @@ def game_hash
     game = {
         :home => {
             :team_name => "Brooklyn Nets",
-            :colors => ["black", "white"],
+            :colors => ["Black", "White"],
             :players => 
                 [ 
                     {
@@ -131,6 +131,8 @@ def game_hash
     }
 end
 
+######-----v Helper functions v-----######
+# Find a player
 def find_player(player)
     game_hash.each do |state, team|
 
@@ -146,6 +148,19 @@ def find_player(player)
     end
 end
 
+# Find a team
+def find_team(name)
+    
+    game_hash.find do |state, team|
+        if team[:team_name] == name
+            return team[:colors]
+        end
+    end
+
+end
+######-----^ Helper functions ^-----######
+
+
 def num_points_scored(player)
     score = 0
     score = find_player(player)[:points]
@@ -157,8 +172,12 @@ def shoe_size(player)
     size = find_player(player)[:shoe]
 end
 
-def team_colors()
-
+def team_colors(name)
+    game_hash.find do |state, team|
+        if team[:team_name] == name
+            return team[:colors]
+        end
+    end
 end
 
 # def team_names()
