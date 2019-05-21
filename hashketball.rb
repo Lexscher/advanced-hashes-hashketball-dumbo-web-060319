@@ -293,9 +293,23 @@ def player_with_longest_name
 end
 
 # # super bonus
-# def long_name_steals_a_ton?()
+def long_name_steals_a_ton?()
 
-# end
+    steals = 0
+    player = ""
+
+    all_players.each do |stats|
+        
+        if stats[:steals] > steals
+            steals = stats[:steals]
+            player = stats[:player_name]
+        end
+
+    end
+
+    true if player == player_with_longest_name
+
+end
 
 
 
