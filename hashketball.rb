@@ -141,12 +141,12 @@ def find_player(player)
             if player == stat_list[:player_name] 
                              
                 return stat_list
-            else
-                puts "Nothin to see here!"
+
             end
         end
     end
 end
+
 
 # Find a team
 def find_team(name)
@@ -204,9 +204,19 @@ def player_numbers(team)
     jersey_numbers
 end
 
-# def player_stats()
+def player_stats(player)
+    stats_only = {}
 
-# end
+    id = find_player(player)
+
+    id.map do |title, stat|
+        if stat != player
+            stats_only[title] = stat
+        end
+    end
+       
+    stats_only
+end
 
 # def big_shoe_rebounds()
 
