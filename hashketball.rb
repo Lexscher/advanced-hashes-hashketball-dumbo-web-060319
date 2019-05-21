@@ -157,6 +157,16 @@ def find_team(name)
     end
 
 end
+
+# Find All Players on a specific team
+def find_players(name_of_team)
+    game_hash.each do |state, team|
+        t = team[:team_name]
+        p = team[:players]
+        return p if t == name_of_team
+    end
+end
+
 ######-----^ Helper functions ^-----######
 
 
@@ -187,9 +197,12 @@ def team_names
     teams
 end
 
-# def player_numbers()
+def player_numbers(team)
+    jersey_numbers = []
+    find_players(team).map{|p| jersey_numbers << p[:number]}
 
-# end
+    jersey_numbers
+end
 
 # def player_stats()
 
