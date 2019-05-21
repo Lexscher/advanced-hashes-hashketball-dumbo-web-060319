@@ -152,9 +152,8 @@ end
 def find_team(name)
     
     game_hash.find do |state, team|
-        if team[:team_name] == name
-            return team[:colors]
-        end
+        t = team[:team_name]
+        return t if t == name
     end
 
 end
@@ -180,9 +179,13 @@ def team_colors(name)
     end
 end
 
-# def team_names()
+def team_names
+    teams = []
+    teams << find_team("Charlotte Hornets")
+    teams << find_team("Brooklyn Nets")
 
-# end
+    teams
+end
 
 # def player_numbers()
 
